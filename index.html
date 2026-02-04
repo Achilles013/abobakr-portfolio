@@ -301,16 +301,35 @@
 
 <!-- HERO CANVAS SCRIPT -->
 <script>
-const canvas=document.getElementById('hero-canvas');
-if(canvas){
-  const ctx=canvas.getContext('2d');let w,h,p=[];
-  function r(){w=canvas.width=innerWidth;h=canvas.height=innerHeight}
-  addEventListener('resize',r);r();
-  class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.5;this.vy=(Math.random()-.5)*.5;this.s=Math.random()*2+1}u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>w)this.vx*=-1;if(this.y<0||this.y>h)this.vy*=-1}d(){ctx.beginPath();ctx.arc(this.x,this.y,this.s,0,Math.PI*2);ctx.fillStyle='rgba(56,189,248,.5)';ctx.fill()}}
-  function i(){p=[];for(let i=0;i<Math.min(innerWidth/15,80);i++)p.push(new P())}i();
-  (function a(){ctx.clearRect(0,0,w,h);for(let i=0;i<p.length;i++)for(let j=i+1;j<p.length;j++){const dx=p[i].x-p[j].x,dy=p[i].y-p[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<150){ctx.beginPath();ctx.strokeStyle=`rgba(56,189,248,${0.15-d/1000})`;ctx.lineWidth=1;ctx.moveTo(p[i].x,p[i].y);ctx.lineTo(p[j].x,p[j].y);ctx.stroke()}}p.forEach(x=>{x.u();x.d()});requestAnimationFrame(a)})()
+<script>
+// Generic Carousel Function
+function initCarousel(carouselId, prevBtnId, nextBtnId) {
+  const track = document.getElementById(carouselId);
+  const prevBtn = document.getElementById(prevBtnId);
+  const nextBtn = document.getElementById(nextBtnId);
+  const items = track.children;
+  let index = 0;
+
+  function updateCarousel() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    index = (index === 0) ? items.length - 1 : index - 1;
+    updateCarousel();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    index = (index === items.length - 1) ? 0 : index + 1;
+    updateCarousel();
+  });
 }
-function scrollToSection(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+
+// Initialize Projects Carousel
+initCarousel('projects-carousel', 'prev-project', 'next-project');
+
+// Initialize Testimonials Carousel
+initCarousel('testimonial-carousel', 'prev-testimonial', 'next-testimonial');
 </script>
 </body>
 </html>
