@@ -33,6 +33,7 @@
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
+  <!-- Custom CSS -->
   <style>
     body { font-family: Inter, sans-serif; background: #020617; color: #e2e8f0; }
     .glass { background: rgba(30,41,59,.7); backdrop-filter: blur(12px); }
@@ -42,18 +43,24 @@
     .nav-link { cursor: pointer; transition: color .2s; }
     .nav-link:hover { color: #38bdf8; }
     #hero-canvas { position: absolute; top:0; left:0; width:100%; height:100%; z-index:-1; }
+    .carousel-container { position: relative; overflow: hidden; }
+    .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+    .carousel-item { min-width: 100%; }
+    .arrow-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(15,23,42,.7); color: #fff; padding: .5rem; border-radius: 9999px; cursor: pointer; z-index: 10; }
+    .arrow-btn:hover { background: rgba(15,23,42,.9); }
   </style>
 </head>
 
 <body class="relative">
 
-<!-- NAVIGATION -->
+<!-- ================= NAVIGATION ================= -->
 <header class="fixed w-full z-50 bg-brand-dark/80 backdrop-blur-md shadow-md">
   <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
     <div class="text-2xl font-bold text-white">Abobakr Elhussaini Elshaikh</div>
     <nav class="space-x-6">
       <span class="nav-link" onclick="scrollToSection('about')">About</span>
       <span class="nav-link" onclick="scrollToSection('projects')">Projects</span>
+      <span class="nav-link" onclick="scrollToSection('testimonials')">Testimonials</span>
       <span class="nav-link" onclick="scrollToSection('experience')">Experience</span>
       <span class="nav-link" onclick="scrollToSection('education')">Education</span>
       <span class="nav-link" onclick="scrollToSection('contact')">Contact</span>
@@ -61,7 +68,7 @@
   </div>
 </header>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 <section class="relative h-screen flex items-center justify-center text-center overflow-hidden">
   <canvas id="hero-canvas"></canvas>
   <div class="relative z-10 max-w-4xl p-6 glass rounded-xl text-white">
@@ -69,9 +76,7 @@
     <p class="text-xl md:text-2xl font-medium mb-6">
       Senior Business Development Executive & Strategic Analyst | Fintech & Digital Transformation Specialist
     </p>
-    <p class="mb-6">
-      Bridging the gap between cutting-edge technology and strategic business growth. Transforming complex data into actionable insights across emerging markets. Extensive experience working remotely with global teams across multiple time zones.
-    </p>
+    <p class="mb-6">Bridging the gap between cutting-edge technology and strategic business growth. Transforming complex data into actionable insights across emerging markets.</p>
     <div class="flex justify-center gap-6">
       <a href="#contact" class="px-6 py-3 bg-brand-accent text-black font-semibold rounded-lg hover:brightness-110 transition">Get in Touch</a>
       <a href="#projects" class="px-6 py-3 border border-brand-accent rounded-lg hover:bg-brand-accent hover:text-black transition">View Projects</a>
@@ -79,7 +84,7 @@
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ================= ABOUT ================= -->
 <section id="about" class="section max-w-7xl mx-auto px-6">
   <h2 class="text-3xl font-bold mb-4 text-brand-accent">About Me</h2>
   <p class="mb-4">
@@ -88,128 +93,203 @@
   <p>
     Core Value Proposition: Turn data chaos into competitive advantage through predictive modeling, competitive intelligence, and strategic foresight that drives VP’s and C-suite decision-making. Extensive experience working in remote environments with global teams across multiple time zones, ensuring seamless collaboration and project delivery.
   </p>
-</section>
-
-<!-- METRICS -->
-<section class="section bg-brand-surface text-white">
-  <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-6 text-center">
-    <div class="p-6 glass rounded-xl">
-      <h3 class="text-4xl font-bold text-brand-accent">8+</h3>
-      <p>Years Experience</p>
-    </div>
-    <div class="p-6 glass rounded-xl">
-      <h3 class="text-4xl font-bold text-brand-accent">$15M+</h3>
-      <p>Pipeline Generated</p>
-    </div>
-    <div class="p-6 glass rounded-xl">
-      <h3 class="text-4xl font-bold text-brand-accent">50+</h3>
-      <p>Global Clients</p>
-    </div>
+  <div class="mt-4 text-sm text-gray-400">
+    <strong>Language Proficiency:</strong> TOEFL Equivalent 580/677, Arabic (Native)
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects" class="section max-w-7xl mx-auto px-6">
-  <h2 class="text-3xl font-bold mb-6 text-brand-accent">Projects & Key Achievements</h2>
+<!-- ================= PROJECTS & KEY IMPACT ================= -->
+<section id="projects" class="section max-w-7xl mx-auto px-6 relative">
+  <h2 class="text-3xl font-bold mb-6 text-brand-accent text-center">Projects & Key Achievements</h2>
 
-  <div class="grid md:grid-cols-2 gap-6">
-    <!-- Project 1: DVAI -->
-    <div class="p-6 glass rounded-xl card-hover">
-      <h3 class="text-xl font-semibold mb-2">DVAI – Decision Velocity Alignment Index</h3>
-      <p class="mb-2">
-        Quantifies organizational friction and EBITDA impact using a causal, predictive, and financialized AI framework.
-      </p>
-      <ul class="list-disc ml-5 mb-2">
-        <li>Measures Decision Delay, KPI Variance, Decision Efficiency, and Executive Alignment Gaps</li>
-        <li>340% ROI validated, $14M annual margin recovered, 41–44% faster decision cycles</li>
-        <li>Tools: Python, Excel, LASSO Regression, Cox Survival Analysis</li>
-        <li>Use Cases: Executive dashboards, post-merger integration, SaaS & Telecom orgs, capital allocation risk prevention</li>
-      </ul>
-      <a href="https://github.com/Achilles013/DVAI-Decision-Velocity-Alignment-Index" target="_blank" class="text-brand-accent underline">View Project on GitHub</a>
+  <!-- Carousel container -->
+  <div class="carousel-container">
+    <div id="projects-carousel" class="carousel-track">
+
+      <!-- Project 1: DVAI -->
+      <div class="carousel-item p-6 glass rounded-xl card-hover">
+        <h3 class="text-xl font-semibold mb-2">DVAI – Decision Velocity Alignment Index</h3>
+        <p class="mb-2">
+          Quantifies organizational friction and EBITDA impact using a causal, predictive, and financialized AI framework.
+        </p>
+        <ul class="list-disc ml-5 mb-2">
+          <li>Measures Decision Delay, KPI Variance, Decision Efficiency, and Executive Alignment Gaps</li>
+          <li>340% ROI validated, $14M annual margin recovered, 41–44% faster decision cycles</li>
+          <li>Tools: Python, Excel, LASSO Regression, Cox Survival Analysis</li>
+          <li>Use Cases: Executive dashboards, post-merger integration, SaaS & Telecom orgs, capital allocation risk prevention</li>
+        </ul>
+        <a href="https://github.com/Achilles013/DVAI-Decision-Velocity-Alignment-Index" target="_blank" class="text-brand-accent underline">View Project on GitHub</a>
+      </div>
+
+      <!-- Project 2: IPO Monitor -->
+      <div class="carousel-item p-6 glass rounded-xl card-hover">
+        <h3 class="text-xl font-semibold mb-2">IPO Monitor Automation</h3>
+        <p class="mb-2">
+          Automated daily monitoring of US IPOs (> $200M) with Python, saving executives hours of manual work.
+        </p>
+        <ul class="list-disc ml-5 mb-2">
+          <li>Automates NASDAQ IPO calendar retrieval, filters by offer size, outputs timestamped text files</li>
+          <li>Technical Stack: Python 3.12, Requests, pytz, python-dotenv, Windows Task Scheduler</li>
+          <li>Production Options: AWS Lambda, Google Cloud Functions, Azure Functions</li>
+        </ul>
+        <a href="https://github.com/Achilles013/ipo-monitor-automation" target="_blank" class="text-brand-accent underline">View Project on GitHub</a>
+      </div>
+
+      <!-- Project 3: AI Lead Scoring -->
+      <div class="carousel-item p-6 glass rounded-xl card-hover">
+        <h3 class="text-xl font-semibold mb-2">AI-Driven Lead Scoring – Meridian Capital Partners</h3>
+        <p class="mb-2">AI-powered lead scoring platform targeting $1M-$100M enterprise value deals.</p>
+        <ul class="list-disc ml-5 mb-2">
+          <li>Tools: Python, Scikit-learn, TensorFlow, Pandas, SQL, Tableau</li>
+          <li>ROI: $4M+, 25% Response Rate Increase, 90-Day Implementation</li>
+          <li>Impact: Reduced sales cycle by 40%, increased conversion by 35%</li>
+        </ul>
+      </div>
+
+      <!-- Project 4: Customer Churn -->
+      <div class="carousel-item p-6 glass rounded-xl card-hover">
+        <h3 class="text-xl font-semibold mb-2">Customer Churn Prediction Model – Telecom Sector</h3>
+        <ul class="list-disc ml-5 mb-2">
+          <li>Tools: Python, Scikit-learn, SHAP, XGBoost, SQL, Power BI, AWS SageMaker</li>
+          <li>Revenue Retention: $8.7M, 89% Prediction Accuracy, 15% Churn Reduction</li>
+        </ul>
+      </div>
+
+      <!-- Project 5: Digital Payments Analysis -->
+      <div class="carousel-item p-6 glass rounded-xl card-hover">
+        <h3 class="text-xl font-semibold mb-2">Digital Payments Market Analysis – Sub-Saharan Africa</h3>
+        <ul class="list-disc ml-5 mb-2">
+          <li>Tools: Excel, Power BI, Tableau, Python, R, SPSS, Google Analytics</li>
+          <li>TAM: $15.4B | 280M+ Unbanked Population | 45% Expected IRR</li>
+        </ul>
+      </div>
+
+      <!-- Project 6: EMEA Digital Banking -->
+      <div class="carousel-item p-6 glass rounded-xl card-hover">
+        <h3 class="text-xl font-semibold mb-2">EMEA Digital Banking Dashboard</h3>
+        <ul class="list-disc ml-5 mb-2">
+          <li>Tools: Power BI, Tableau, D3.js, JavaScript, SQL</li>
+          <li>Reporting Time Reduction: 70% | Stakeholder Alignment across 15+ countries</li>
+        </ul>
+      </div>
+
+      <!-- Project 7: Phishing Simulator -->
+      <div class="carousel-item p-6 glass rounded-xl card-hover">
+        <h3 class="text-xl font-semibold mb-2">Phishing Simulator (In Progress)</h3>
+        <p class="mb-2">Developing a real-time phishing simulation and training platform for enterprises.</p>
+        <ul class="list-disc ml-5 mb-2">
+          <li>Tools: Python, Flask, SQL, Email Automation, Security Awareness Analytics</li>
+          <li>Status: Beta stage, targeted release Q2 2026</li>
+        </ul>
+      </div>
+
     </div>
 
-    <!-- Project 2: IPO Monitor Automation -->
-    <div class="p-6 glass rounded-xl card-hover">
-      <h3 class="text-xl font-semibold mb-2">IPO Monitor Automation</h3>
-      <p class="mb-2">
-        Automated daily monitoring of US IPOs (> $200M) with Python, saving executives hours of manual work.
-      </p>
-      <ul class="list-disc ml-5 mb-2">
-        <li>Automates NASDAQ IPO calendar retrieval, filters by offer size, outputs timestamped text files</li>
-        <li>Technical Stack: Python 3.12, Requests, pytz, python-dotenv, Windows Task Scheduler</li>
-        <li>Production Options: AWS Lambda, Google Cloud Functions, Azure Functions</li>
-      </ul>
-      <a href="https://github.com/Achilles013/ipo-monitor-automation" target="_blank" class="text-brand-accent underline">View Project on GitHub</a>
-    </div>
-
-    <!-- Add remaining projects similarly -->
+    <!-- Carousel Arrows -->
+    <button id="prev-project" class="arrow-btn left-2">&#8592;</button>
+    <button id="next-project" class="arrow-btn right-2">&#8594;</button>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
+<!-- ================= TESTIMONIALS ================= -->
+<section id="testimonials" class="section max-w-7xl mx-auto px-6 relative">
+  <h2 class="text-3xl font-bold mb-6 text-brand-accent text-center">Testimonials</h2>
+
+  <div class="carousel-container">
+    <div id="testimonial-carousel" class="carousel-track">
+
+      <!-- Testimonial 1 -->
+      <div class="carousel-item p-4">
+        <div class="p-6 glass rounded-xl card-hover text-center">
+          <p class="italic mb-4">"Abobakr transformed our go-to-market strategy using his DVAI framework. Decisions are now faster and revenue impact is measurable."</p>
+          <h3 class="font-semibold">Jane Doe</h3>
+          <p class="text-sm text-gray-400">VP Strategy, SaaS Corp</p>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="carousel-item p-4">
+        <div class="p-6 glass rounded-xl card-hover text-center">
+          <p class="italic mb-4">"His predictive models on customer churn saved us $8.7M. Truly data-driven and strategic."</p>
+          <h3 class="font-semibold">John Smith</h3>
+          <p class="text-sm text-gray-400">Director, Telecom Analytics</p>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="carousel-item p-4">
+        <div class="p-6 glass rounded-xl card-hover text-center">
+          <p class="italic mb-4">"Working with Abobakr on remote global teams was seamless — his leadership and insight made complex projects feel effortless."</p>
+          <h3 class="font-semibold">Ali Al-Fulan</h3>
+          <p class="text-sm text-gray-400">Head of Product, Fintech Startup</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Testimonial Arrows -->
+    <button id="prev-testimonial" class="arrow-btn left-2">&#8592;</button>
+    <button id="next-testimonial" class="arrow-btn right-2">&#8594;</button>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
 <section id="experience" class="section max-w-7xl mx-auto px-6">
   <h2 class="text-3xl font-bold mb-6 text-brand-accent">Professional Experience</h2>
+
   <div class="space-y-6">
-    <!-- Senior BDE -->
+    <!-- Job 1 -->
     <div class="glass p-6 rounded-xl card-hover">
       <h3 class="text-xl font-semibold">Senior Business Development Executive – Market Intelligence & Analytics | Data Tech Solutions | Remote | Mar 2024 – Present</h3>
       <ul class="list-disc ml-5 mt-2">
         <li>Built $2M+ qualified pipeline (18% close rate), driving 20% enterprise acquisition growth.</li>
         <li>Spearheaded churn reduction programs using Python predictive models ($8.7M ARR safeguarded).</li>
         <li>Designed executive KPI dashboards in Power BI to reduce forecast errors by 32%.</li>
-        <li>Managed $1M+ program budgets with zero compliance violations; improved renewal rates 18% & NPS +24.</li>
+        <li>Managed $1M+ program budgets with zero compliance violations, increased renewal rates 18% and NPS 24 points.</li>
       </ul>
     </div>
 
-    <!-- Senior BDE – Emerging Tech -->
+    <!-- Job 2 -->
     <div class="glass p-6 rounded-xl card-hover">
       <h3 class="text-xl font-semibold">Senior Business Development Executive – Emerging Tech & Data Analytics | Remote | Sep 2022 – Jan 2024</h3>
       <ul class="list-disc ml-5 mt-2">
         <li>Closed 10 high-value institutional deals (~$150K ACV), driving 30% YoY growth.</li>
-        <li>Directed market entry studies identifying $5M+ opportunities in blockchain, cloud, and digital finance.</li>
-        <li>Produced 25+ C-suite intelligence reports; R/Excel forecasting models improved ROI by 40%.</li>
+        <li>Directed market entry studies identifying $5M+ opportunities in digital finance, blockchain, and cloud infrastructure.</li>
+        <li>Produced 25+ C-suite intelligence reports and engineered R/Excel-based forecasting models improving ROI by 40%.</li>
       </ul>
     </div>
 
-    <!-- Economic & Data Consultant -->
+    <!-- Job 3 -->
     <div class="glass p-6 rounded-xl card-hover">
       <h3 class="text-xl font-semibold">Economic & Data Consultant | Cairo / Remote | Dec 2015 – Present (Part-Time)</h3>
       <ul class="list-disc ml-5 mt-2">
-        <li>Delivered 50+ advisory projects across Africa & MENA.</li>
-        <li>Developed econometric models forecasting GDP impact across 6 nations.</li>
-        <li>Advised on $20M+ public-private partnerships for tech infrastructure.</li>
+        <li>Delivered 50+ advisory projects across Africa & MENA, including economic impact assessments and feasibility studies.</li>
+        <li>Developed econometric models forecasting GDP impact across 6 African nations.</li>
+        <li>Advised on $20M+ public-private partnerships for tech infrastructure projects.</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- EDUCATION & CERTIFICATIONS -->
+<!-- ================= EDUCATION & CERTIFICATIONS ================= -->
 <section id="education" class="section max-w-7xl mx-auto px-6">
   <h2 class="text-3xl font-bold mb-6 text-brand-accent">Education & Certifications</h2>
+  
   <div class="grid md:grid-cols-2 gap-6">
     <div class="glass p-6 rounded-xl">
       <h3 class="text-xl font-semibold">Education</h3>
       <ul class="list-disc ml-5 mt-2">
-        <li>Master's in Economics (in progress), Cairo University (2021-Present)</li>
+        <li>Master's Degree in Economics (in progress), Cairo University (2021-Present)</li>
         <li>Diploma in Economics & Political Science, Cairo University (2019-2020), Grade: Good</li>
-        <li>Bachelor's in Economics, Culture & Science City, October Higher Institute (2013-2017), Grade: Very Good</li>
+        <li>Bachelor's in Economics, Culture and Science City, October Higher Institute of Economics (2013-2017), Grade: Very Good</li>
       </ul>
     </div>
+
     <div class="glass p-6 rounded-xl">
       <h3 class="text-xl font-semibold">Certifications & Licenses</h3>
       <ul class="list-disc ml-5 mt-2 space-y-1">
-        <li>Generative AI Application Evaluation and Governance Databricks Issued Feb 2026</li>
-        <li>The GRC Approach to Managing Cyber Security – Kennesaw State University (Coursera, Jul 2024)</li>
-        <li>Palo Alto Networks Certified Cloud Security Professional (Jan 2026)</li>
-        <li>Cybersecurity Practitioner – Palo Alto Networks (Jan 2026)</li>
-        <li>Applied Data Science & Machine Learning Courses – IBM </li>
-        <li>OPSWAT Introduction to Critical Infrastructure Protection (ICIP) OPSWAT Issued Jul 2024<li>
-      </ul>
-      <p class="mt-2 text-sm text-gray-400">Language Proficiency: TOEFL Equivalent 580/677, Arabic (Native)</p>
-    </div>
-  </div>
-</section>
-
+        <li>Generative AI Application Evaluation & Governance – Databricks (Feb 2026)</li>
+        <li>Palo Alto Networks Certified Cloud Security
 <!-- CONTACT -->
 <section id="contact" class="section max-w-7xl mx-auto px-6 text-center">
   <h2 class="text-3xl font-bold mb-6 text-brand-accent">Get in Touch</h2>
