@@ -95,11 +95,11 @@ body { font-family: Inter, sans-serif; background: #020617; color: #e2e8f0; over
 <section id="projects" class="section max-w-7xl mx-auto px-6 relative">
   <h2 class="text-3xl font-bold mb-6 text-brand-accent text-center">Projects & Key Achievements</h2>
   
-  <div class="carousel-container">
-    <div id="projects-carousel" class="carousel-track">
+  <div class="carousel-container relative overflow-hidden">
+    <div id="projects-carousel" class="carousel-track flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar py-4">
 
       <!-- Project 1 -->
-      <div class="carousel-item p-6 glass rounded-xl card-hover">
+      <div class="carousel-item p-6 glass rounded-xl card-hover min-w-[300px] md:min-w-[380px] snap-start flex-shrink-0">
         <h3 class="text-xl font-semibold mb-2">DVAI – Decision Velocity Alignment Index</h3>
         <p class="mb-2">Quantifies organizational friction and EBITDA impact using a causal, predictive, and financialized AI framework.</p>
         <ul class="list-disc ml-5 mb-2">
@@ -107,11 +107,11 @@ body { font-family: Inter, sans-serif; background: #020617; color: #e2e8f0; over
           <li>340% ROI validated, $14M annual margin recovered, 41–44% faster decision cycles</li>
           <li>Tools: Python, Excel, LASSO Regression</li>
         </ul>
-        <a href="https://github.com/Achilles013/DVAI-Decision-Velocity-Alignment-Index" target="_blank" class="text-brand-accent underline">View Project on GitHub</a>
+        <a href="https://github.com/Achilles013/DVAI-Decision-Velocity-Alignment-Index" target="_blank" rel="noopener noreferrer" class="text-brand-accent underline">View Project on GitHub</a>
       </div>
 
       <!-- Project 2 -->
-      <div class="carousel-item p-6 glass rounded-xl card-hover">
+      <div class="carousel-item p-6 glass rounded-xl card-hover min-w-[300px] md:min-w-[380px] snap-start flex-shrink-0">
         <h3 class="text-xl font-semibold mb-2">IPO Monitor Automation</h3>
         <p class="mb-2">Developed a Python tool to automate daily US IPO tracking and streamline executive workflows.</p>
         <ul class="list-disc ml-5 mb-2">
@@ -119,48 +119,11 @@ body { font-family: Inter, sans-serif; background: #020617; color: #e2e8f0; over
           <li>Technical Stack: Python 3.12, Requests, pytz, python-dotenv, Windows Task Scheduler</li>
           <li>Production Options: AWS Lambda, Google Cloud Functions</li>
         </ul>
-        <a href="https://github.com/Achilles013/ipo-monitor-Here is the corrected HTML. 
-
-### What was fixed:
-1. **Missing Closing Tags:** Added the missing `</div>` to close `.carousel-container` and `</section>` at the very end of the document. Without these, the layout would break the rest of your page.
-2. **Invisible Characters:** Removed the non-breaking spaces (invisible characters that looked like spaces) at the beginning of several lines which can cause unexpected rendering issues.
-3. **Security Best Practices:** Added `rel="noopener noreferrer"` to your `target="_blank"` GitHub links to prevent security vulnerabilities and performance issues.
-4. **DOM Structure:** Moved the carousel control buttons inside the `.carousel-container` so their absolute positioning classes (`left-2`, `right-2`) anchor correctly to the carousel rather than the whole section.
-
-```html
-<!-- PROJECTS -->
-<section id="projects" class="section max-w-7xl mx-auto px-6 relative">
-  <h2 class="text-3xl font-bold mb-6 text-brand-accent text-center">Projects & Key Achievements</h2>
-  
-  <div class="carousel-container relative">
-    <div id="projects-carousel" class="carousel-track">
-
-      <!-- Project 1 -->
-      <div class="carousel-item p-6 glass rounded-xl card-hover">
-        <h3 class="text-xl font-semibold mb-2">DVAI – Decision Velocity Alignment Index</h3>
-        <p class="mb-2">Quantifies organizational friction and EBITDA impact using a causal, predictive, and financialized AI framework.</p>
-        <ul class="list-disc ml-5 mb-2">
-          <li>Measures Decision Delay, KPI Variance, Decision Efficiency, and Executive Alignment Gaps</li>
-          <li>340% ROI validated, $14M annual margin recovered, 41–44% faster decision cycles</li>
-          <li>Tools: Python, Excel, LASSO Regression</li>
-        </ul>
-        <a href="[https://github.com/Achilles013/DVAI-Decision-Velocity-Alignment-Index](https://github.com/Achilles013/DVAI-Decision-Velocity-Alignment-Index)" target="_blank" rel="noopener noreferrer" class="text-brand-accent underline">View Project on GitHub</a>
-      </div>
-
-      <!-- Project 2 -->
-      <div class="carousel-item p-6 glass rounded-xl card-hover">
-        <h3 class="text-xl font-semibold mb-2">IPO Monitor Automation</h3>
-        <p class="mb-2">Developed a Python tool to automate daily US IPO tracking and streamline executive workflows.</p>
-        <ul class="list-disc ml-5 mb-2">
-          <li>Automates NASDAQ IPO calendar retrieval, filters by offer size, outputs timestamped text files</li>
-          <li>Technical Stack: Python 3.12, Requests, pytz, python-dotenv, Windows Task Scheduler</li>
-          <li>Production Options: AWS Lambda, Google Cloud Functions</li>
-        </ul>
-        <a href="[https://github.com/Achilles013/ipo-monitor-automation](https://github.com/Achilles013/ipo-monitor-automation)" target="_blank" rel="noopener noreferrer" class="text-brand-accent underline">View Project on GitHub</a>
+        <a href="https://github.com/Achilles013/ipo-monitor-automation" target="_blank" rel="noopener noreferrer" class="text-brand-accent underline">View Project on GitHub</a>
       </div>
 
       <!-- Project 3 -->
-      <div class="carousel-item p-6 glass rounded-xl card-hover">
+      <div class="carousel-item p-6 glass rounded-xl card-hover min-w-[300px] md:min-w-[380px] snap-start flex-shrink-0">
         <h3 class="text-xl font-semibold mb-2">AI-Driven Lead Scoring – Meridian Capital Partners</h3>
         <p class="mb-2">AI-powered lead scoring platform targeting $1M-$100M enterprise value deals.</p>
         <ul class="list-disc ml-5 mb-2">
@@ -171,7 +134,7 @@ body { font-family: Inter, sans-serif; background: #020617; color: #e2e8f0; over
       </div>
 
       <!-- Project 4 -->
-      <div class="carousel-item p-6 glass rounded-xl card-hover">
+      <div class="carousel-item p-6 glass rounded-xl card-hover min-w-[300px] md:min-w-[380px] snap-start flex-shrink-0">
         <h3 class="text-xl font-semibold mb-2">Customer Churn Prediction Model – Telecom Sector</h3>
         <ul class="list-disc ml-5 mb-2">
           <li>Tools: Python, SQL, Power BI</li>
@@ -180,7 +143,7 @@ body { font-family: Inter, sans-serif; background: #020617; color: #e2e8f0; over
       </div>
 
       <!-- Project 5 -->
-      <div class="carousel-item p-6 glass rounded-xl card-hover">
+      <div class="carousel-item p-6 glass rounded-xl card-hover min-w-[300px] md:min-w-[380px] snap-start flex-shrink-0">
         <h3 class="text-xl font-semibold mb-2">Digital Payments Market Analysis – Sub-Saharan Africa</h3>
         <ul class="list-disc ml-5 mb-2">
           <li>Tools: Excel, Power BI, Tableau, Python, Google Analytics</li>
@@ -189,7 +152,7 @@ body { font-family: Inter, sans-serif; background: #020617; color: #e2e8f0; over
       </div>
 
       <!-- Project 6 -->
-      <div class="carousel-item p-6 glass rounded-xl card-hover">
+      <div class="carousel-item p-6 glass rounded-xl card-hover min-w-[300px] md:min-w-[380px] snap-start flex-shrink-0">
         <h3 class="text-xl font-semibold mb-2">EMEA Digital Banking Dashboard</h3>
         <ul class="list-disc ml-5 mb-2">
           <li>Tools: Power BI, Tableau, JavaScript, SQL</li>
@@ -198,7 +161,7 @@ body { font-family: Inter, sans-serif; background: #020617; color: #e2e8f0; over
       </div>
 
       <!-- Project 7 -->
-      <div class="carousel-item p-6 glass rounded-xl card-hover">
+      <div class="carousel-item p-6 glass rounded-xl card-hover min-w-[300px] md:min-w-[380px] snap-start flex-shrink-0">
         <h3 class="text-xl font-semibold mb-2">AI & Data Science Job Salaries 2026</h3>
         <p class="mb-2">Statistical and predictive analysis of salary drivers across AI and data-science roles using a synthetic Kaggle dataset (5,000 records, 27 variables, 12 markets).</p>
         <ul class="list-disc ml-5 mb-2">
@@ -212,11 +175,30 @@ body { font-family: Inter, sans-serif; background: #020617; color: #e2e8f0; over
 
     </div><!-- end carousel-track -->
 
-    <button id="prev-project" class="arrow-btn left-2">&#8592;</button>
-    <button id="next-project" class="arrow-btn right-2">&#8594;</button>
+    <button id="prev-project" class="arrow-btn absolute left-2 top-1/2 -translate-y-1/2 z-10 cursor-pointer">&#8592;</button>
+    <button id="next-project" class="arrow-btn absolute right-2 top-1/2 -translate-y-1/2 z-10 cursor-pointer">&#8594;</button>
   </div>
 </section>
-          
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.getElementById('projects-carousel');
+    const prevBtn = document.getElementById('prev-project');
+    const nextBtn = document.getElementById('next-project');
+
+    if (carousel && prevBtn && nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        const itemWidth = carousel.querySelector('.carousel-item')?.offsetWidth || 340;
+        carousel.scrollBy({ left: itemWidth + 24, behavior: 'smooth' });
+      });
+
+      prevBtn.addEventListener('click', () => {
+        const itemWidth = carousel.querySelector('.carousel-item')?.offsetWidth || 340;
+        carousel.scrollBy({ left: -(itemWidth + 24), behavior: 'smooth' });
+      });
+    }
+  });
+</script>
 <!-- TESTIMONIALS -->
 <section id="testimonials" class="section max-w-7xl mx-auto px-6 relative">
 <h2 class="text-3xl font-bold mb-6 text-brand-accent text-center">Testimonials</h2>
